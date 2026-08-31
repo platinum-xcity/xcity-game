@@ -449,14 +449,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     border-bottom: 1px solid #1e1e28;
     line-height: 1.5;
   }
-  .points-table tr.pt-soon {
-    opacity: 0.45;
+  .points-table tr.pt-soon td {
+    color: var(--muted);
+  }
+  .points-table tr.pt-soon td.pt-points {
+    color: var(--muted);
   }
   .pt-soon-badge {
     display: inline-block;
-    background: rgba(255,255,255,0.08);
-    color: var(--muted);
-    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.14);
+    color: #ddd;
+    border: 1px solid rgba(255,255,255,0.4);
     font-size: 0.7em;
     font-weight: 700;
     letter-spacing: 0.05em;
@@ -634,7 +637,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <tr><td>註冊並升級會員</td><td class="pt-points">500 點</td></tr>
       <tr><td>成功續約</td><td class="pt-points">1,000 點</td></tr>
       <tr><td>推薦好友加入<span class="pt-note">好友完成續約後發送</span></td><td class="pt-points">2,000 點</td></tr>
-      <tr class="pt-soon"><td>每日登入<span class="pt-soon-badge">後續上線</span></td><td class="pt-points">8 點</td></tr>
+      <tr class="pt-soon"><td>每日登入<span class="pt-soon-badge">後續開放</span></td><td class="pt-points">8 點</td></tr>
     </tbody>
   </table>
   <p class="points-footnote">將於賽季後一個月內結算積分並抽取獎項，積分越高抽取獎項機會與價值越高！</p>
