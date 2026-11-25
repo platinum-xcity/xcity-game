@@ -15,63 +15,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0a0a0f">
+
   <title>XCITY 紳士聯盟｜支持正版比拼紳士積分，送日本機票與女優互動！</title>
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    html, body {
+    html {
       width: 100%;
-      min-height: 100%;
-      overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
     body {
+      width: 100%;
+      min-height: 100vh;
+      overflow-x: hidden;
       background: #0a0a0f;
       color: #e8e0d0;
-      font-family: "Helvetica Neue", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      font-family: "Helvetica Neue", "PingFang TC",
+        "Microsoft JhengHei", sans-serif;
       line-height: 1.6;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    /* HERO */
+    /* =========================
+       HERO 主視覺
+    ========================= */
+
     .hero {
       position: relative;
       width: 100%;
-      aspect-ratio: 16 / 9;
-      min-height: 520px;
+      height: min(56.25vw, 900px);
+      min-height: 620px;
       max-height: 900px;
       overflow: hidden;
-      isolation: isolate;
-      background: #0a0a0f;
+      background-color: #0a0a0f;
+
+      /* 直接使用背景圖片，避免負 z-index 層級問題 */
+      background-image:
+        linear-gradient(
+          180deg,
+          rgba(5,5,9,0.10),
+          rgba(5,5,9,0.20) 55%,
+          rgba(5,5,9,0.48)
+        ),
+        url("./images/hero-bg.jpg");
+
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
     }
 
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-      background: url("images/hero-bg.jpg") center center / cover no-repeat;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      background: linear-gradient(
-        180deg,
-        rgba(5, 5, 9, 0.12) 0%,
-        rgba(5, 5, 9, 0.22) 55%,
-        rgba(5, 5, 9, 0.48) 100%
-      );
-    }
+    /* LOGO */
 
     .site-logo {
       position: absolute;
-      z-index: 5;
-      top: 2.2%;
-      left: 2%;
-      width: clamp(76px, 8vw, 132px);
+      z-index: 10;
+      top: 24px;
+      left: 28px;
+      width: clamp(80px, 7vw, 125px);
+      display: block;
     }
 
     .site-logo img {
@@ -80,65 +91,80 @@
       height: auto;
     }
 
+    /* 主副標 */
+
     .hero-content {
       position: absolute;
       z-index: 2;
-      top: 56%;
+      top: 34%;
       left: 50%;
       transform: translateX(-50%);
       width: 92%;
       text-align: center;
-      pointer-events: none;
     }
 
     .hero-badge {
       display: inline-block;
-      margin-bottom: 1.1%;
-      padding: 0.25em 1em;
-      border: 1px solid rgba(201, 168, 76, 0.8);
-      border-radius: 2px;
+      margin-bottom: 18px;
+      padding: 3px 16px;
+      border: 1px solid rgba(201,168,76,0.8);
+      border-radius: 3px;
       color: #d9b85f;
-      background: rgba(0, 0, 0, 0.35);
-      font-size: clamp(9px, 0.85vw, 13px);
-      letter-spacing: 0.16em;
+      background: rgba(0,0,0,0.4);
+      font-size: clamp(10px,0.85vw,13px);
+      letter-spacing: 2px;
     }
 
     .hero h1 {
       color: #fff;
-      font-size: clamp(22px, 3.2vw, 54px);
+      font-size: clamp(28px,3.2vw,54px);
       font-weight: 800;
-      line-height: 1.2;
-      letter-spacing: 0.035em;
-      text-shadow: 0 3px 16px rgba(0, 0, 0, 0.85);
+      line-height: 1.25;
+      letter-spacing: 1px;
+      text-shadow: 0 3px 16px rgba(0,0,0,0.85);
     }
 
     .hero-subtitle {
       display: block;
-      margin-top: 0.45em;
-      color: #fff;
-      font-size: clamp(13px, 1.55vw, 25px);
+      margin-top: 10px;
+      color: #f0d18a;
+      font-size: clamp(15px,1.7vw,25px);
       font-weight: 700;
-      letter-spacing: 0.04em;
-      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+      letter-spacing: 1px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.9);
     }
+
+    /* 倒數 */
 
     .countdown {
       position: absolute;
-      z-index: 2;
-      top: 75%;
+      z-index: 3;
+      top: 57%;
       left: 50%;
       transform: translateX(-50%);
-      width: min(60%, 760px);
-      min-height: 8%;
+
+      width: min(60%,760px);
+      min-height: 76px;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0;
-      padding: 0.45% 2.5%;
-      border: 1px solid rgba(255, 255, 255, 0.48);
+
+      padding: 8px 25px;
+
+      border: 1px solid rgba(255,255,255,0.48);
       border-radius: 24px;
-      background: linear-gradient(180deg, rgba(28, 25, 31, 0.88), rgba(55, 47, 54, 0.82));
-      box-shadow: inset 0 1px 8px rgba(255,255,255,0.18), 0 5px 18px rgba(0,0,0,0.25);
+
+      background: linear-gradient(
+        180deg,
+        rgba(28,25,31,0.88),
+        rgba(55,47,54,0.82)
+      );
+
+      box-shadow:
+        inset 0 1px 8px rgba(255,255,255,0.18),
+        0 5px 18px rgba(0,0,0,0.25);
+
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
@@ -148,78 +174,94 @@
       min-width: 0;
       text-align: center;
       color: #fff;
-      line-height: 1.05;
+      line-height: 1.1;
     }
 
     .cd-num {
       display: inline-block;
-      font-size: clamp(18px, 3vw, 42px);
+      font-size: clamp(22px,3vw,42px);
       font-weight: 800;
-      letter-spacing: 0.02em;
+      letter-spacing: 1px;
       font-variant-numeric: tabular-nums;
       text-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
     .cd-label {
-      display: inline-block;
-      margin-left: 5px;
+      display: block;
+      margin-top: 4px;
       color: #e8d49c;
-      font-size: clamp(8px, 1.05vw, 15px);
+      font-size: clamp(9px,0.85vw,13px);
       font-weight: 700;
-      letter-spacing: 0.04em;
-      vertical-align: 12%;
+      letter-spacing: 1px;
     }
 
     .cd-sep {
       width: 1px;
-      height: 58%;
+      height: 42px;
       flex: 0 0 1px;
-      margin: 0 1.5%;
-      background: rgba(255,255,255,0.65);
+      margin: 0 2%;
+      background: rgba(255,255,255,0.5);
     }
+
+    /* CTA 上方說明 */
 
     .hero-mech {
       position: absolute;
-      z-index: 2;
-      top: 85%;
+      z-index: 3;
+      top: 70%;
       left: 50%;
       transform: translateX(-50%);
       width: 90%;
       color: rgba(255,255,255,0.78);
       text-align: center;
-      font-size: clamp(9px, 1vw, 14px);
-      letter-spacing: 0.06em;
+      font-size: clamp(11px,1vw,14px);
+      letter-spacing: 1px;
     }
+
+    /* CTA 按鈕 */
 
     .hero-btns {
       position: absolute;
-      z-index: 3;
-      top: 89%;
+      z-index: 4;
+      top: 77%;
       left: 50%;
       transform: translateX(-50%);
+
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 14px;
+
       width: 90%;
-      pointer-events: auto;
     }
 
     .hero-cta {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 180px;
-      min-height: 48px;
-      padding: 0.65em 2em;
+
+      min-width: 190px;
+      min-height: 52px;
+      padding: 12px 28px;
+
       border: 1px solid rgba(255,239,190,0.9);
       border-radius: 4px;
-      background: linear-gradient(180deg, #f1d17a 0%, #d5ad4b 100%);
+
+      background: linear-gradient(
+        180deg,
+        #f1d17a 0%,
+        #d5ad4b 100%
+      );
+
       color: #17120a;
-      font-size: clamp(13px, 1.25vw, 18px);
+      font-size: 17px;
       font-weight: 800;
-      letter-spacing: 0.08em;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.3), inset 0 1px 2px rgba(255,255,255,0.55);
+      letter-spacing: 2px;
+
+      box-shadow:
+        0 4px 18px rgba(0,0,0,0.3),
+        inset 0 1px 2px rgba(255,255,255,0.55);
+
       transition: filter 0.2s, transform 0.2s;
       white-space: nowrap;
     }
@@ -233,17 +275,22 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 0.65em 1.7em;
+
+      min-height: 52px;
+      padding: 12px 26px;
+
       border: 1px solid #d5ad4b;
       border-radius: 4px;
+
       background: rgba(0,0,0,0.38);
       color: #e5c56d;
-      font-size: clamp(12px, 1.1vw, 16px);
+
+      font-size: 15px;
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: 1px;
       white-space: nowrap;
-      transition: background 0.2s, color 0.2s;
+
+      transition: background 0.2s,color 0.2s;
     }
 
     .hero-cta-secondary:hover {
@@ -251,27 +298,41 @@
       color: #17120a;
     }
 
-    /* EARLY BIRD STRIP */
+    /* =========================
+       活動提示橫幅
+    ========================= */
+
     .earlybird {
-      padding: 14px 18px;
+      padding: 15px 18px;
       border-top: 1px solid rgba(201,168,76,0.65);
       border-bottom: 1px solid rgba(201,168,76,0.65);
-      background: linear-gradient(90deg, #1a1100, #261900, #1a1100);
+
+      background: linear-gradient(
+        90deg,
+        #1a1100,
+        #261900,
+        #1a1100
+      );
+
       text-align: center;
     }
 
     .earlybird p {
       color: #e8ca82;
-      font-size: clamp(12px, 1.2vw, 16px);
-      letter-spacing: 0.04em;
-      line-height: 1.75;
+      font-size: clamp(12px,1.2vw,16px);
+      letter-spacing: 1px;
     }
 
-    .earlybird strong { color: #fff; }
+    .earlybird strong {
+      color: #fff;
+    }
 
-    /* CONTENT SECTIONS */
+    /* =========================
+       內容區
+    ========================= */
+
     .content-section {
-      width: min(1100px, 100%);
+      width: min(1100px,100%);
       margin: 0 auto;
       padding: 64px 20px;
     }
@@ -279,14 +340,14 @@
     .section-title {
       margin-bottom: 10px;
       color: #fff;
-      font-size: clamp(24px, 3vw, 34px);
+      font-size: clamp(24px,3vw,34px);
       font-weight: 800;
       text-align: center;
-      letter-spacing: 0.04em;
+      letter-spacing: 1px;
     }
 
     .section-subtitle {
-      margin-bottom: 34px;
+      margin-bottom: 30px;
       color: #c9a84c;
       font-size: 14px;
       text-align: center;
@@ -296,23 +357,26 @@
       width: 48px;
       height: 2px;
       margin: 0 auto 30px;
-      border-radius: 2px;
       background: #c9a84c;
     }
 
-    /* PRIZE CARDS */
+    /* =========================
+       六張獎品圖片
+    ========================= */
+
     .prize-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(3,minmax(0,1fr));
       gap: 22px;
     }
 
     .prize-card {
+      min-width: 0;
       overflow: hidden;
       border: 1px solid #2a2a32;
       border-radius: 12px;
       background: #141418;
-      transition: transform 0.2s, border-color 0.2s;
+      transition: transform 0.2s,border-color 0.2s;
     }
 
     .prize-card:hover {
@@ -324,9 +388,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
       width: 100%;
       aspect-ratio: 1 / 1;
       overflow: hidden;
+
       background: #141418;
     }
 
@@ -335,9 +401,12 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
+      object-position: center;
     }
 
-    .prize-info { padding: 15px 16px 17px; }
+    .prize-info {
+      padding: 15px 16px 17px;
+    }
 
     .prize-name {
       margin-bottom: 4px;
@@ -364,13 +433,14 @@
       text-align: center;
     }
 
-    /* POINTS TABLE */
+    /* =========================
+       點數表格
+    ========================= */
+
     .points-table {
       width: 100%;
       margin: 20px 0;
-      overflow: hidden;
       border-collapse: collapse;
-      border-radius: 10px;
       background: #141418;
     }
 
@@ -387,8 +457,14 @@
       font-weight: 700;
     }
 
-    .points-table td { color: #ddd; }
-    .points-table .pt-points { color: #e8ca82; font-weight: 800; }
+    .points-table td {
+      color: #ddd;
+    }
+
+    .points-table .pt-points {
+      color: #e8ca82;
+      font-weight: 800;
+    }
 
     .pt-note {
       display: block;
@@ -404,7 +480,10 @@
       text-align: center;
     }
 
-    /* FOOTER CTA */
+    /* =========================
+       頁尾 CTA
+    ========================= */
+
     .footer-cta {
       padding: 42px 20px;
       background: #111116;
@@ -435,13 +514,17 @@
       text-align: center;
     }
 
-    /* TABLET / MOBILE */
-    @media (max-width: 768px) {
+    /* =========================
+       手機版 RWD
+    ========================= */
+
+    @media (max-width:768px) {
+
       .hero {
-        aspect-ratio: auto;
-        height: min(100svh, 760px);
-        min-height: 560px;
+        height: 680px;
+        min-height: 680px;
         max-height: none;
+        background-position: center center;
       }
 
       .site-logo {
@@ -451,144 +534,260 @@
       }
 
       .hero-content {
-        top: 31%;
+        top: 25%;
         width: 94%;
       }
 
       .hero-badge {
         margin-bottom: 12px;
+        padding: 3px 9px;
         font-size: 9px;
       }
 
       .hero h1 {
-        font-size: clamp(22px, 5.5vw, 34px);
-        line-height: 1.25;
+        font-size: clamp(22px,5.5vw,34px);
+        line-height: 1.3;
       }
 
       .hero-subtitle {
-        margin-top: 7px;
-        font-size: clamp(13px, 3.5vw, 18px);
+        margin-top: 8px;
+        font-size: clamp(13px,3.5vw,18px);
       }
 
       .countdown {
-        top: 57%;
-        width: 88%;
-        min-height: 54px;
+        top: 47%;
+        width: 90%;
+        min-height: 62px;
         padding: 7px 3%;
         border-radius: 999px;
       }
 
-      .cd-num { font-size: clamp(18px, 5vw, 27px); }
-      .cd-label { margin-left: 2px; font-size: 8px; }
-      .cd-sep { height: 55%; margin: 0 1%; }
+      .cd-num {
+        font-size: clamp(18px,5vw,27px);
+      }
+
+      .cd-label {
+        font-size: 8px;
+      }
+
+      .cd-sep {
+        height: 36px;
+        margin: 0 1%;
+      }
 
       .hero-mech {
-        top: 70%;
+        top: 61%;
         font-size: 11px;
       }
 
       .hero-btns {
-        top: 77%;
+        top: 69%;
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
       }
 
       .hero-cta,
       .hero-cta-secondary {
-        width: min(260px, 78%);
-        min-height: 44px;
+        width: min(270px,85%);
+        min-height: 46px;
         font-size: 14px;
       }
 
-      .content-section { padding: 46px 16px; }
-      .prize-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }
-      .prize-info { padding: 11px 12px 13px; }
-      .prize-name { font-size: 15px; }
-      .prize-desc { font-size: 12px; }
+      .content-section {
+        padding: 46px 16px;
+      }
+
+      .prize-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+        gap: 13px;
+      }
+
+      .prize-info {
+        padding: 11px 12px 13px;
+      }
+
+      .prize-name {
+        font-size: 15px;
+      }
+
+      .prize-desc {
+        font-size: 12px;
+      }
 
       .points-table th,
       .points-table td {
         padding: 11px 9px;
         font-size: 13px;
       }
+
+      .footer-cta p {
+        font-size: 15px;
+      }
     }
 
-    @media (max-width: 380px) {
-      .hero { min-height: 530px; }
-      .hero h1 { font-size: 21px; }
-      .countdown { width: 92%; }
-      .cd-num { font-size: 17px; }
-      .cd-label { font-size: 7px; }
-      .prize-grid { gap: 10px; }
-      .prize-name { font-size: 14px; }
+    @media (max-width:380px) {
+
+      .hero {
+        height: 650px;
+        min-height: 650px;
+      }
+
+      .hero h1 {
+        font-size: 21px;
+      }
+
+      .countdown {
+        width: 94%;
+      }
+
+      .cd-num {
+        font-size: 17px;
+      }
+
+      .cd-label {
+        font-size: 7px;
+      }
+
+      .prize-grid {
+        gap: 10px;
+      }
+
+      .prize-name {
+        font-size: 14px;
+      }
+
+      .prize-desc {
+        font-size: 11px;
+      }
     }
+
   </style>
 </head>
 
 <body>
+
   <!-- Google Tag Manager (noscript) -->
   <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WDSKPF"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    <iframe
+      src="https://www.googletagmanager.com/ns.html?id=GTM-WDSKPF"
+      height="0"
+      width="0"
+      style="display:none;visibility:hidden">
+    </iframe>
   </noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+  <!-- HERO -->
   <header class="hero" aria-label="XCITY 紳士賽季主視覺">
-    <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
 
-    <a class="site-logo" href="https://tc.xcity.jp/main" target="_blank" rel="noopener">
-      <img src="images/logo.png" alt="XCITY">
+    <a
+      class="site-logo"
+      href="https://tc.xcity.jp/main"
+      target="_blank"
+      rel="noopener">
+
+      <img src="./images/logo.png" alt="XCITY">
+
     </a>
 
     <div class="hero-content">
-      <div class="hero-badge">SEASON 1 · 2026.09.01 - 2026.12.31</div>
+
+      <div class="hero-badge">
+        SEASON 1 · 2026.09.01 - 2026.12.31
+      </div>
+
       <h1>入夜之後，東京才真正甦醒…</h1>
-      <span class="hero-subtitle">XCITY 探索大人的夜遊樂園</span>
+
+      <span class="hero-subtitle">
+        XCITY 探索大人的夜遊樂園
+      </span>
+
     </div>
 
-    <div class="countdown" id="countdown" aria-label="賽季結束倒數">
+    <!-- COUNTDOWN -->
+    <div class="countdown" id="countdown">
+
       <div class="cd-unit">
         <span class="cd-num" id="days">--</span>
         <span class="cd-label">DAYS</span>
       </div>
+
       <div class="cd-sep"></div>
+
       <div class="cd-unit">
         <span class="cd-num" id="hours">--</span>
         <span class="cd-label">HRS</span>
       </div>
+
       <div class="cd-sep"></div>
+
       <div class="cd-unit">
         <span class="cd-num" id="mins">--</span>
         <span class="cd-label">MIN</span>
       </div>
+
       <div class="cd-sep"></div>
+
       <div class="cd-unit">
         <span class="cd-num" id="secs">--</span>
         <span class="cd-label">SEC</span>
       </div>
+
     </div>
 
-    <p class="hero-mech">加入會員 · 累積點數 · 贏得頂級獎品</p>
+    <p class="hero-mech">
+      加入會員 · 累積點數 · 贏得頂級獎品
+    </p>
 
+    <!-- CTA -->
     <div class="hero-btns">
-      <a class="hero-cta" href="https://tc.xcity.jp/main" target="_blank" rel="noopener">等你來收集</a>
-      <a class="hero-cta-secondary" href="#prizes">查看詳細獎品 ↓</a>
+
+      <a
+        class="hero-cta"
+        href="https://tc.xcity.jp/main"
+        target="_blank"
+        rel="noopener">
+        等你來收集
+      </a>
+
+      <a
+        class="hero-cta-secondary"
+        href="#prizes">
+        查看詳細獎品 ↓
+      </a>
+
     </div>
+
   </header>
 
+  <!-- 活動提示 -->
   <div class="earlybird">
-    <p>🎁 賽季進行期間加入會員皆有機會獲獎，<strong>越早加入機會越高！</strong></p>
+    <p>
+      🎁 賽季進行期間加入會員皆有機會獲獎，
+      <strong>越早加入機會越高！</strong>
+    </p>
   </div>
 
+  <!-- 獎品區 -->
   <section class="content-section" id="prizes">
-    <h2 class="section-title">豐富會員獎品一覽</h2>
-    <p class="section-subtitle">點數越多，抽獎機會越高——這些大獎正在等你</p>
+
+    <h2 class="section-title">
+      豐富會員獎品一覽
+    </h2>
+
+    <p class="section-subtitle">
+      點數越多，抽獎機會越高——這些大獎正在等你
+    </p>
+
     <div class="divider"></div>
 
     <div class="prize-grid">
+
       <article class="prize-card">
-        <div class="prize-img-wrap"><img src="images/prize1.png" alt="女優一對一互動" loading="lazy"></div>
+        <div class="prize-img-wrap">
+          <img src="./images/prize1.png"
+               alt="女優一對一互動">
+        </div>
         <div class="prize-info">
           <div class="prize-name">女優一對一互動</div>
           <div class="prize-desc">免費互動席位</div>
@@ -596,7 +795,10 @@
       </article>
 
       <article class="prize-card">
-        <div class="prize-img-wrap"><img src="images/prize2.png" alt="女優周邊商品" loading="lazy"></div>
+        <div class="prize-img-wrap">
+          <img src="./images/prize2.png"
+               alt="女優周邊商品">
+        </div>
         <div class="prize-info">
           <div class="prize-name">女優周邊商品</div>
           <div class="prize-desc">限定周邊好禮</div>
@@ -604,7 +806,10 @@
       </article>
 
       <article class="prize-card">
-        <div class="prize-img-wrap"><img src="images/prize3.png" alt="女優貼身物品" loading="lazy"></div>
+        <div class="prize-img-wrap">
+          <img src="./images/prize3.png"
+               alt="女優貼身物品">
+        </div>
         <div class="prize-info">
           <div class="prize-name">女優貼身物品</div>
           <div class="prize-desc">隨機私密戰利品</div>
@@ -612,7 +817,10 @@
       </article>
 
       <article class="prize-card">
-        <div class="prize-img-wrap"><img src="images/prize4.png" alt="專屬影片放送" loading="lazy"></div>
+        <div class="prize-img-wrap">
+          <img src="./images/prize4.png"
+               alt="專屬影片放送">
+        </div>
         <div class="prize-info">
           <div class="prize-name">專屬影片放送</div>
           <div class="prize-desc">女優親錄祝賀影片</div>
@@ -621,7 +829,10 @@
       </article>
 
       <article class="prize-card">
-        <div class="prize-img-wrap"><img src="images/prize5.png" alt="拍片場景巡禮" loading="lazy"></div>
+        <div class="prize-img-wrap">
+          <img src="./images/prize5.png"
+               alt="拍片場景巡禮">
+        </div>
         <div class="prize-info">
           <div class="prize-name">拍片場景巡禮</div>
           <div class="prize-desc">幕後獨家體驗</div>
@@ -630,60 +841,114 @@
       </article>
 
       <article class="prize-card">
-        <div class="prize-img-wrap"><img src="images/prize6.png" alt="日本來回機票" loading="lazy"></div>
+        <div class="prize-img-wrap">
+          <img src="./images/prize6.png"
+               alt="日本來回機票">
+        </div>
         <div class="prize-info">
           <div class="prize-name">日本來回機票</div>
           <div class="prize-desc">雙人機票大獎</div>
         </div>
       </article>
+
     </div>
 
-    <p class="prizes-footnote">＊本活動最終解釋權歸主辦方所有，獎項內容如有調整，將以最終公告為主。</p>
+    <p class="prizes-footnote">
+      ＊本活動最終解釋權歸主辦方所有，
+      獎項內容如有調整，將以最終公告為主。
+    </p>
+
   </section>
 
+  <!-- 點數規則 -->
   <section class="content-section">
-    <h2 class="section-title">會員點數怎麼賺？</h2>
-    <p class="section-subtitle">累積點數，抽獎機會全面提升</p>
+
+    <h2 class="section-title">
+      會員點數怎麼賺？
+    </h2>
+
+    <p class="section-subtitle">
+      累積點數，抽獎機會全面提升
+    </p>
+
     <div class="divider"></div>
 
     <table class="points-table">
+
       <thead>
         <tr>
           <th>行動</th>
           <th>可獲得點數</th>
         </tr>
       </thead>
+
       <tbody>
+
         <tr>
           <td>註冊並升級會員</td>
           <td class="pt-points">500 點</td>
         </tr>
+
         <tr>
           <td>成功續約</td>
           <td class="pt-points">1,000 點</td>
         </tr>
+
         <tr>
-          <td>推薦好友加入<span class="pt-note">好友完成續約後發送</span></td>
+          <td>
+            推薦好友加入
+            <span class="pt-note">
+              好友完成續約後發送
+            </span>
+          </td>
           <td class="pt-points">3,000 點</td>
         </tr>
+
       </tbody>
+
     </table>
 
-    <p class="points-footnote">將於賽季後一個月內結算積分並抽取獎項，積分越高抽取獎項機會與價值越高！</p>
-    <p class="points-footnote">為防範作弊並保障會員權益，開獎當下需為「訂閱有效中，且身份為已付費續約會員」狀態才能參與獎品池抽獎。</p>
+    <p class="points-footnote">
+      將於賽季後一個月內結算積分並抽取獎項，
+      積分越高抽取獎項機會與價值越高！
+    </p>
+
+    <p class="points-footnote">
+      為防範作弊並保障會員權益，
+      開獎當下需為「訂閱有效中，且身份為已付費續約會員」
+      狀態才能參與獎品池抽獎。
+    </p>
+
   </section>
 
+  <!-- 頁尾 CTA -->
   <div class="footer-cta">
-    <p>現在加入，成為紳士王 👑 贏得心儀大獎！</p>
-    <a href="https://tc.xcity.jp/main" target="_blank" rel="noopener">立即加入會員 →</a>
+
+    <p>
+      現在加入，成為紳士王 👑 贏得心儀大獎！
+    </p>
+
+    <a
+      href="https://tc.xcity.jp/main"
+      target="_blank"
+      rel="noopener">
+      立即加入會員 →
+    </a>
+
   </div>
 
-  <footer class="site-footer">© XCITY · All Rights Reserved</footer>
+  <footer class="site-footer">
+    © XCITY · All Rights Reserved
+  </footer>
 
+  <!-- 倒數程式 -->
   <script>
-    // 倒數至台灣時間 2026/12/31 23:59:59
     (function () {
-      const target = new Date('2026-12-31T23:59:59+08:00').getTime();
+
+      // 倒數至台灣時間 2026/12/31 23:59:59
+      const target = new Date(
+        '2026-12-31T23:59:59+08:00'
+      ).getTime();
 
       const elements = {
         days: document.getElementById('days'),
@@ -693,23 +958,34 @@
       };
 
       function updateCountdown() {
+
         const diff = Math.max(0, target - Date.now());
 
-        elements.days.textContent = Math.floor(diff / 86400000);
-        elements.hours.textContent = String(
-          Math.floor((diff % 86400000) / 3600000)
-        ).padStart(2, '0');
-        elements.mins.textContent = String(
-          Math.floor((diff % 3600000) / 60000)
-        ).padStart(2, '0');
-        elements.secs.textContent = String(
-          Math.floor((diff % 60000) / 1000)
-        ).padStart(2, '0');
+        elements.days.textContent =
+          Math.floor(diff / 86400000);
+
+        elements.hours.textContent =
+          String(
+            Math.floor((diff % 86400000) / 3600000)
+          ).padStart(2,'0');
+
+        elements.mins.textContent =
+          String(
+            Math.floor((diff % 3600000) / 60000)
+          ).padStart(2,'0');
+
+        elements.secs.textContent =
+          String(
+            Math.floor((diff % 60000) / 1000)
+          ).padStart(2,'0');
+
       }
 
       updateCountdown();
-      setInterval(updateCountdown, 1000);
+      setInterval(updateCountdown,1000);
+
     })();
   </script>
+
 </body>
 </html>
