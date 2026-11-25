@@ -45,17 +45,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     display: block;
   }
   /* ── HERO ── */
-  .hero {
+  hero {
     position: relative;
     width: 100%;
-    height: min(100svh, 700px);
+    height: min(85svh, 650px);
+    min-height: 560px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     overflow: hidden;
-  }
+}
   .hero-bg {
     position: absolute; inset: 0;
     background-image: url('images/hero-bg.jpg');
@@ -71,7 +72,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     position: relative;
     z-index: 2;
     padding: 0 1.5rem;
-    margin-bottom: clamp(3rem, 8vw, 5rem);
+   margin-bottom: 0;
   }
   .hero-badge {
     display: inline-block;
@@ -508,14 +509,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="hero">
 <div class="site-logo"><img id="pi-0" src="images/logo.png" alt="XCITY"></div>
-  <div class="float-tags">
-  <span class="ftag" style="left:4%;  top:18%; --dur:9s;  --delay:0s;   --y1:-16px; --y2:10px;  --x1:5px;  --x2:-4px;">✈ 日本來回機票</span>
-  <span class="ftag" style="right:5%; top:15%; --dur:11s; --delay:-3s;  --y1:-12px; --y2:8px;   --x1:-6px; --x2:4px;">🎬 女優一對一互動</span>
-  <span class="ftag" style="left:7%;  top:55%; --dur:10s; --delay:-5s;  --y1:-10px; --y2:14px;  --x1:8px;  --x2:-6px;">🎁 女優周邊商品</span>
-  <span class="ftag" style="right:4%; top:52%; --dur:8.5s;--delay:-2s;  --y1:-18px; --y2:6px;   --x1:-4px; --x2:5px;">👙 女優貼身物品</span>
-  <span class="ftag" style="left:2%;  top:36%; --dur:12s; --delay:-7s;  --y1:-8px;  --y2:12px;  --x1:6px;  --x2:-3px;">📹 專屬影片放送<span class="ftag-note">🔓 待解鎖</span></span>
-  <span class="ftag" style="right:3%; top:38%; --dur:9.5s;--delay:-4s;  --y1:-14px; --y2:9px;   --x1:-5px; --x2:7px;">🎥 拍片場景巡禮<span class="ftag-note">🔓 待解鎖</span></span>
-</div>
 <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -537,7 +530,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a class="hero-cta-secondary" href="#prizes" onclick="event.preventDefault();document.getElementById('prizes').scrollIntoView({behavior:'smooth'})">查看詳細獎品 ↓</a>
     </div>
   </div>
-<div class="prize-marquee"><div class="prize-marquee-inner"><span>✈ 日本來回機票</span><span>🎬 女優一對一互動</span><span>🎁 女優周邊商品</span><span>👙 女優貼身物品</span><span>📹 專屬影片放送（🔓 待解鎖）</span><span>🎥 拍片場景巡禮（🔓 待解鎖）</span><span>✈ 日本來回機票</span><span>🎬 女優一對一互動</span><span>🎁 女優周邊商品</span><span>👙 女優貼身物品</span><span>📹 專屬影片放送（🔓 待解鎖）</span><span>🎥 拍片場景巡禮（🔓 待解鎖）</span></div></div>
 </section>
 </div>
 
@@ -555,28 +547,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="divider"></div>
   <div class="prize-grid">
     <div class="prize-card">
-      <div class="prize-img-wrap"><img id="pi-1" src="images/prize-1.jpg" alt="女優一對一互動" loading="lazy"></div>
+      <div class="prize-img-wrap"><img id="pi-1" src="images/prize1.jpg" alt="女優一對一互動" loading="lazy"></div>
       <div class="prize-info">
         <div class="prize-name">女優一對一互動</div>
         <div class="prize-desc">免費互動席位</div>
       </div>
     </div>
     <div class="prize-card">
-      <div class="prize-img-wrap"><img id="pi-2" src="images/prize-2.jpg" alt="女優周邊商品" loading="lazy"></div>
+      <div class="prize-img-wrap"><img id="pi-2" src="images/prize2.jpg" alt="女優周邊商品" loading="lazy"></div>
       <div class="prize-info">
         <div class="prize-name">女優周邊商品</div>
         <div class="prize-desc">限定周邊好禮</div>
       </div>
     </div>
     <div class="prize-card">
-      <div class="prize-img-wrap"><img id="pi-3" src="images/prize-3.jpg" alt="女優貼身物品" loading="lazy"></div>
+      <div class="prize-img-wrap"><img id="pi-3" src="images/prize3.jpg" alt="女優貼身物品" loading="lazy"></div>
       <div class="prize-info">
         <div class="prize-name">女優貼身物品</div>
         <div class="prize-desc">隨機私密戰利品</div>
       </div>
     </div>
     <div class="prize-card">
-      <div class="prize-img-wrap"><img id="pi-4" src="images/prize-4.jpg" alt="專屬影片放送" loading="lazy"></div>
+      <div class="prize-img-wrap"><img id="pi-4" src="images/prize4.jpg" alt="專屬影片放送" loading="lazy"></div>
       <div class="prize-info">
         <div class="prize-name">專屬影片放送</div>
         <div class="prize-desc">女優親錄祝賀影片</div>
@@ -584,7 +576,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <div class="prize-card">
-      <div class="prize-img-wrap"><img id="pi-5" src="images/prize-5.jpg" alt="拍片場景巡禮" loading="lazy"></div>
+      <div class="prize-img-wrap"><img id="pi-5" src="images/prize5.jpg" alt="拍片場景巡禮" loading="lazy"></div>
       <div class="prize-info">
         <div class="prize-name">拍片場景巡禮</div>
         <div class="prize-desc">幕後獨家體驗</div>
@@ -592,7 +584,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <div class="prize-card">
-      <div class="prize-img-wrap"><img id="pi-6" src="images/prize-6.jpg" alt="日本來回機票" loading="lazy"></div>
+      <div class="prize-img-wrap"><img id="pi-6" src="images/prize6.jpg" alt="日本來回機票" loading="lazy"></div>
       <div class="prize-info">
         <div class="prize-name">日本來回機票</div>
         <div class="prize-desc">雙人機票大獎</div>
